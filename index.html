@@ -22,10 +22,14 @@
         }).catch(function(e) {
           console.log(`problem has been detected with your fetching operations for resource. Error "${url}"` + e.message);
         }) 
-         
-        
       };
+      let coffee = fetchAndDecode('coffee.jpg', 'blob');
+      let tea = fetchAndDecode('tea.jpg', 'blob');
+      let description = fetchAndDecode('description.txt', 'text');
 
+      Promise.all([coffee, tea, description]).then(function(values) {
+        concole.log(values);
+      });
 
     </script>
 

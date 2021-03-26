@@ -21,7 +21,9 @@
           }
         }).catch(function(e) {
           console.log(`problem has been detected with your fetching operations for resource. Error "${url}"` + e.message);
-        }) 
+        }).finally(function() {
+          console.log(`fetching finished for "${url}"`);
+        })
       };
       let coffee = fetchAndDecode('coffee.jpg', 'blob');
       let tea = fetchAndDecode('tea.jpg', 'blob');

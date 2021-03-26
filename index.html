@@ -8,7 +8,25 @@
     <p>This is my page</p>
 
     <script>
-      
+      function fetchAndDecode(url, type) {
+        return fetch(url).then(function(response) {
+          if (!response.ok) {
+            throw new Error(`HTTP error detected. Status: ${response.ok}`);
+          } else {
+            if (type === 'blob') {
+              return response.blob();
+            } else if (type === 'text') {
+              return response.text();
+            }
+          }
+        }).catch(function(e) {
+          console.log(`problem has been detected with your fetching operations for resource. Error "${url}"` + e.message);
+        }) 
+         
+        
+      };
+
+
     </script>
 
   </body>
